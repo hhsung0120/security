@@ -31,12 +31,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login/fail")
             .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/login/loout"))
+                .logoutRequestMatcher(new AntPathRequestMatcher("/login/logout"))
                 .logoutSuccessUrl("/login/form")
                 .invalidateHttpSession(true)
             .and()
                 .exceptionHandling().accessDeniedPage("/login/denied");
-
 
     }
 }

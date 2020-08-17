@@ -7,6 +7,6 @@
 <body>
 <a sec:authorize="isAnonymous()" th:href="@{/login/form}">로그인</a>
 <a sec:authorize="isAuthenticated()" th:href="@{/login/logout}">로그아웃</a>
-<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">어드민</a>
+<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/login}">어드민</a>
 </body>
 </html>

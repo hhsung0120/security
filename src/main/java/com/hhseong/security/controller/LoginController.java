@@ -1,9 +1,7 @@
 package com.hhseong.security.controller;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/login")
@@ -12,7 +10,7 @@ public class LoginController {
 
     @GetMapping("/form")
     public String loginForm(){
-        System.out.println("로그인 폼 입니다.");
+        System.out.println("유저 로그인 폼 입니다.");
         return "/login/form";
     }
 
@@ -20,4 +18,5 @@ public class LoginController {
     public String loginFail(){
         return "/login/fail";
     }
+
 }
