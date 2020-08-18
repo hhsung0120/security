@@ -26,6 +26,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String userId = (String)authentication.getPrincipal();
         String userPassword = (String)authentication.getCredentials();
 
+        //로그인 로직 구현
         UserDetails user = loginService.loadUserByUsername(userId);
 
         return new UsernamePasswordAuthenticationToken(user.getUsername(), userPassword, user.getAuthorities());
