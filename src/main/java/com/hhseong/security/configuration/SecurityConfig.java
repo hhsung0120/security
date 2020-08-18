@@ -27,13 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("userId")
                 .passwordParameter("password")
                 .loginProcessingUrl("/login/perform")
-                .defaultSuccessUrl("/index")
+                .defaultSuccessUrl("/login/success")
                 .failureUrl("/login/fail")
-
             .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/login/logout"))
-                .logoutSuccessUrl("/login/form")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login/logout")
                 .invalidateHttpSession(true)
             .and()
                 .exceptionHandling().accessDeniedPage("/login/denied");

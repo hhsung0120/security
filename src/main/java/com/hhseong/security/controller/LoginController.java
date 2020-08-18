@@ -10,8 +10,20 @@ public class LoginController {
 
     @GetMapping("/form")
     public String loginForm(){
-        System.out.println("유저 로그인 폼 입니다.");
+        System.out.println("유저 로그인 폼");
         return "/login/form";
+    }
+
+    @GetMapping("/success")
+    public String loginSuccess(){
+        System.out.println("유저 로그인 성공");
+        return "/login/success";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        System.out.println("유저 로그아웃 성공");
+        return "/login/logout";
     }
 
     @GetMapping("/fail")

@@ -10,7 +10,7 @@ public class AdminController {
 
     @GetMapping("/login")
     public String loginForm(){
-        System.out.println("로그인 폼ddd 입니다.");
-        return "admin/form";
+        System.out.println("어드민 로그인 성공");
+        return "/admin/success";
     }
 }
