@@ -18,26 +18,17 @@ import java.util.List;
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
+    @Autowired
+    private LoginService loginService;
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String userId = (String)authentication.getPrincipal();
         String userPassword = (String)authentication.getCredentials();
 
-        List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
-        if ("user".equals(userId)) {
-            System.out.println("1");
-            roles.add(new SimpleGrantedAuthority("ROLE_USER"));
-        } else if ("admin".equals(userId)) {
-            System.out.println("2");
-            roles.add(new SimpleGrantedAuthority("ROLE_USER"));
-            roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        } else {
-            System.out.println("3");
-            return null;
-        }
-        UserDetails user = new User(userId,userPassword,roles);
+        UserDetails user = loginService.loadUserByUsername(userId);
 
-        return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), user.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(user.getUsername(), userPassword, user.getAuthorities());
     }
     @Override
     public boolean supports(Class<?> authentication) {
