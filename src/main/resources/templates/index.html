@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,6 +8,6 @@
 <body>
 <a sec:authorize="isAnonymous()" th:href="@{/login/form}">로그인</a>
 <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
-<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/login}">어드민</a>
+<a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/admin/login}">어드민</a>
 </body>
 </html>

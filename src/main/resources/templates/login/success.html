@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<span sec:authentication="principal.userId"></span>님 환영합니다~
-<a href="/logout">로그아웃</a>
-<a href="/index">메인</a>
+<div>
+    ID : <span sec:authentication="name"></span> 환영이요 ~ <br>
+    소유 권한 : <span sec:authentication="authorities"></span> <br>
+</div>
+<div>
+    <a href="/logout">로그아웃</a>
+    <a href="/index">메인</a>
+</div>
 </body>
 </html>
