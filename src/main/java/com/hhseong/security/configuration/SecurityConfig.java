@@ -1,6 +1,8 @@
 package com.hhseong.security.configuration;
 
+import com.hhseong.security.customhandler.CustomAuthenticationProvider;
 import com.hhseong.service.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,6 +16,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private CustomAuthenticationProvider customAuthenticationProvider;
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -39,7 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login/logout")
                 .invalidateHttpSession(true)
             .and()
-                .exceptionHandling().accessDeniedPage("/login/denied");
+                .exceptionHandling().accessDeniedPage("/login/denied")
+            .and()
+                .authenticationProvider(customAuthenticationProvider);
     }
 
     @Bean
